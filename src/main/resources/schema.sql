@@ -12,5 +12,5 @@ CREATE TABLE public.review_rating (
 );
 
 INSERT INTO public.review_rating
-(review_id, place_id, review_description, review_star, user_mobile)
-VALUES(1, 1, 'Good place', 4.0, '7385787937');
+( place_id, review_description, review_star, user_mobile)
+VALUES( 1, 'Good place', 4.0, '7385787937');
