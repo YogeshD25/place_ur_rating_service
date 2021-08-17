@@ -1,6 +1,5 @@
 
-
-CREATE TABLE review_rating (
+CREATE TABLE IF NOT EXISTS review_rating (
     review_id SERIAL PRIMARY KEY,
 	place_id int8 NULL,
 	review_description varchar(255) NULL,
