@@ -5,8 +5,8 @@ import com.imutable.coding.rating.service.service.RatingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(path = "/rating")
@@ -21,14 +21,14 @@ public class RatingController {
     }
 
     @GetMapping
-    public List<Rating> getAllRatingByPlaceId(@RequestParam long id) {
+    public Flux<Rating> getAllRatingByPlaceId(@RequestParam long id) {
         log.info("Inside Rating Controller in getAllRatingByPlaceId");
         return ratingService.getAllRatingByPlaceId(id);
     }
 
     @PostMapping
-    public void savePlace(@RequestBody Rating rating) {
+    public Mono<Rating> savePlace(@RequestBody Rating rating) {
         log.info("Inside Rating Controller in saveRating");
-        ratingService.saveCategory(rating);
+        return ratingService.saveCategory(rating);
     }
 }

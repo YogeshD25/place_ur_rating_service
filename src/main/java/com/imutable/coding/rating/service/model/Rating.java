@@ -4,28 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 import java.sql.Date;
-import java.sql.Time;
 
-@Entity
-@Table(name = "review_rating")
+
+@Table("review_rating")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Rating {
 
     @Id
-    @SequenceGenerator(
-            name = "place_sequence",
-            sequenceName = "place_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "place_sequence"
-    )
     @JsonIgnore
     private long reviewId;
     @Column
@@ -38,6 +29,6 @@ public class Rating {
     private float reviewStar;
     @Column
     @JsonIgnore
-    private Date timestamp;
+    private Date created_at;
 
 }
